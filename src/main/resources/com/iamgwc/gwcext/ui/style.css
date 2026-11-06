@@ -1,0 +1,303 @@
+.app-shell {
+    -fx-tone-bg-base: #15171c;
+    -fx-tone-bg-surface: #1b1e24;
+    -fx-tone-bg-raised: #21242b;
+    -fx-tone-border: #2a2e37;
+    -fx-tone-text: #e6e9ef;
+    -fx-tone-text-muted: #8b93a3;
+    -fx-tone-accent: #e8b34d;
+    -fx-tone-accent-hover: #f3c369;
+    -fx-tone-removed: #e2685f;
+    -fx-tone-added: #5fb87a;
+    -fx-tone-edit-dot: #6fb3d9;
+
+    -fx-background-color: -fx-tone-bg-base;
+    -fx-font-family: "CaskaydiaCove NFM", "Segoe UI", "SF Pro Text", "Ubuntu", "Cantarell", sans-serif;
+}
+
+.root-pane {
+    -fx-background-color: -fx-tone-bg-base;
+}
+
+/* Custom title bg
+   The window is undecorated (see MainApp) so we can give the title bar
+   its own accent color, which no platform lets you do to a native
+   title bar. It sits above .root-pane as a sibling under .app-shell,
+   which is why the color tokens above are defined on .app-shell rather
+   than .root-pane, both branches need to look them up. */
+
+.title-bar {
+    -fx-background-color: -fx-tone-accent;
+    -fx-padding: 8 10 8 14;
+}
+
+.title-bar-label {
+    -fx-text-fill: #241a05;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.title-bar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #241a05;
+    -fx-font-size: 12px;
+    -fx-min-width: 32px;
+    -fx-min-height: 26px;
+    -fx-cursor: hand;
+    -fx-background-radius: 4;
+}
+
+.title-bar-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.15);
+}
+
+.title-bar-close:hover {
+    -fx-background-color: -fx-tone-removed;
+    -fx-text-fill: white;
+}
+
+.toolbar {
+    -fx-background-color: -fx-tone-bg-surface;
+    -fx-padding: 12 16 12 16;
+    -fx-alignment: center-left;
+    -fx-border-color: transparent transparent -fx-tone-border transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.brand-mark {
+    -fx-text-fill: -fx-tone-accent;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+    -fx-padding: 0 12 0 2;
+}
+
+.toolbar-divider {
+    -fx-background-color: -fx-tone-border;
+}
+
+.toolbar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-tone-text-muted;
+    -fx-background-radius: 6;
+    -fx-padding: 7 14 7 14;
+    -fx-font-size: 12.5px;
+    -fx-cursor: hand;
+    -fx-border-color: -fx-tone-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+
+.toolbar-button:hover {
+    -fx-background-color: -fx-tone-bg-raised;
+    -fx-text-fill: -fx-tone-text;
+}
+
+.toolbar-button.primary {
+    -fx-background-color: -fx-tone-accent;
+    -fx-text-fill: #241a05;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+}
+
+.toolbar-button.primary:hover {
+    -fx-background-color: -fx-tone-accent-hover;
+}
+
+.status-pill {
+    -fx-background-color: -fx-tone-bg-raised;
+    -fx-text-fill: -fx-tone-text-muted;
+    -fx-font-size: 11px;
+    -fx-padding: 5 12 5 12;
+    -fx-background-radius: 999;
+    -fx-border-color: -fx-tone-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 999;
+}
+
+.main-split, .history-split {
+    -fx-background-color: -fx-tone-bg-base;
+    -fx-padding: 0;
+}
+
+.main-split > .split-pane-divider, .history-split > .split-pane-divider {
+    -fx-background-color: -fx-tone-border;
+    -fx-padding: 0 1 0 1;
+}
+
+.editor-host {
+    -fx-background-color: -fx-tone-bg-base;
+}
+
+.code-area {
+    -fx-font-family: "CaskaydiaCove NFM", "Cascadia Code", "JetBrains Mono", "Consolas", "Menlo", monospace;
+    -fx-font-size: 14px;
+    -fx-background-color: -fx-tone-bg-base;
+    -fx-text-fill: -fx-tone-text;
+}
+
+/* RichTextFX renders text as Text nodes (Shape based), which are colored
+   via -fx-fill, not -fx-text-fill. Without this rule the text stays at
+   its default black fill regardless of -fx-text-fill above*/
+.code-area .text {
+    -fx-fill: -fx-tone-text;
+}
+
+.code-area .caret {
+    -fx-stroke: -fx-tone-accent;
+}
+
+.code-area .selection {
+    -fx-fill: -fx-tone-accent;
+    -fx-opacity: 0.35;
+}
+
+.code-area .lineno {
+    -fx-background-color: -fx-tone-bg-base;
+    -fx-text-fill: -fx-tone-text-muted;
+    -fx-padding: 0 12 0 6;
+}
+
+/* text that originated from a paste is
+   underlined directly in the editor, not just called out in the side
+   panel. Recomputed after each save (see EditorController.refreshProvenanceHighlighting). */
+.code-area .pasted-text {
+    -fx-underline: true;
+    -fx-fill: -fx-tone-accent;
+}
+
+.history-panel, .detail-panel {
+    -fx-background-color: -fx-tone-bg-surface;
+    -fx-padding: 14 14 14 14;
+}
+
+.panel-title {
+    -fx-text-fill: -fx-tone-text;
+    -fx-font-size: 12.5px;
+    -fx-font-weight: bold;
+}
+
+.panel-subtitle {
+    -fx-text-fill: -fx-tone-text-muted;
+    -fx-font-size: 10.5px;
+    -fx-padding: 0 0 4 0;
+}
+
+.history-list {
+    -fx-background-color: -fx-tone-bg-surface;
+    -fx-control-inner-background: -fx-tone-bg-surface;
+}
+
+.history-list .list-cell {
+    -fx-background-color: -fx-tone-bg-surface;
+    -fx-padding: 8 8 8 6;
+    -fx-background-radius: 6;
+}
+
+.history-list .list-cell:filled:hover {
+    -fx-background-color: -fx-tone-bg-raised;
+}
+
+.history-list .list-cell:filled:selected {
+    -fx-background-color: -fx-tone-bg-raised;
+    -fx-border-color: transparent transparent transparent -fx-tone-accent;
+    -fx-border-width: 0 0 0 3;
+}
+
+.history-cell-time {
+    -fx-text-fill: -fx-tone-text;
+    -fx-font-size: 11.5px;
+}
+
+.history-cell-summary {
+    -fx-text-fill: -fx-tone-text-muted;
+    -fx-font-size: 11px;
+}
+
+.dot-paste {
+    -fx-fill: -fx-tone-accent;
+}
+
+.dot-edit {
+    -fx-fill: -fx-tone-edit-dot;
+}
+
+.detail-scroll {
+    -fx-background-color: -fx-tone-bg-surface;
+    -fx-background: -fx-tone-bg-surface;
+}
+
+.detail-scroll .viewport {
+    -fx-background-color: -fx-tone-bg-surface;
+}
+
+.detail-flow {
+    -fx-background-color: -fx-tone-bg-raised;
+    -fx-padding: 12;
+    -fx-line-spacing: 3;
+}
+
+.detail-heading {
+    -fx-fill: -fx-tone-text;
+    -fx-font-weight: bold;
+    -fx-font-size: 12.5px;
+}
+
+.detail-meta {
+    -fx-fill: -fx-tone-text-muted;
+    -fx-font-size: 11px;
+}
+
+.detail-plain {
+    -fx-fill: -fx-tone-text;
+    -fx-font-size: 12px;
+}
+
+.detail-removed {
+    -fx-fill: -fx-tone-removed;
+    -fx-font-size: 12px;
+    -fx-strikethrough: true;
+}
+
+.detail-added {
+    -fx-fill: -fx-tone-added;
+    -fx-font-size: 12px;
+}
+
+.history-search {
+    -fx-background-color: -fx-tone-bg-raised;
+    -fx-text-fill: -fx-tone-text;
+    -fx-prompt-text-fill: -fx-tone-text-muted;
+    -fx-background-radius: 6;
+    -fx-border-color: -fx-tone-border;
+    -fx-border-radius: 6;
+    -fx-font-size: 11.5px;
+    -fx-padding: 5 8 5 8;
+}
+
+.history-filter {
+    -fx-background-color: -fx-tone-bg-raised;
+    -fx-border-color: -fx-tone-border;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-font-size: 11.5px;
+}
+
+.history-filter .list-cell, .history-filter .label {
+    -fx-text-fill: -fx-tone-text;
+}
+
+
+/*Settings */
+
+.icon-button { /* no longer used, just kept it around */
+    -fx-font-size: 15px;
+    -fx-padding: 3 10 3 10;
+}
+
+.settings-preview {
+    -fx-text-fill: -fx-tone-text;
+    -fx-background-color: -fx-tone-bg-raised;
+    -fx-background-radius: 6;
+    -fx-padding: 8 10 8 10;
+}
